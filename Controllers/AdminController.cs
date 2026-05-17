@@ -2,7 +2,7 @@
 
 namespace YourProject.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
         public IActionResult Index()
         {
