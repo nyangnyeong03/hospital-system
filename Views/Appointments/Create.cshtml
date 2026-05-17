@@ -1,0 +1,44 @@
+﻿@model CahwciHospital.Models.Appointment
+
+<div class="container mt-4">
+    <h2>New Appointment</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label class="form-label">Patient Name</label>
+            <input asp-for="PatientName" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Doctor Name</label>
+            <input asp-for="DoctorName" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Department</label>
+            <input asp-for="Department" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Appointment Date</label>
+            <input asp-for="Date" type="datetime-local" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Reason</label>
+            <textarea asp-for="Reason" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select asp-for="Status" class="form-select">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Appointment</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

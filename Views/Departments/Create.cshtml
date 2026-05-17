@@ -1,0 +1,25 @@
+﻿@model CahwciHospital.Models.Department
+
+<div class="container mt-4">
+    <h2>New Department</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label class="form-label">Department Name</label>
+            <input asp-for="Name" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Head Doctor</label>
+            <input asp-for="HeadDoctor" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Department</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

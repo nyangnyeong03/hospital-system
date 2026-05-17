@@ -1,0 +1,33 @@
+﻿@model CahwciHospital.Models.Doctor
+
+<div class="container mt-4">
+    <h2>New Doctor</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input asp-for="FullName" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Specialty</label>
+            <input asp-for="Specialty" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select asp-for="Gender" class="form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contact Number</label>
+            <input asp-for="ContactNumber" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Doctor</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

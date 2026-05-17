@@ -1,0 +1,87 @@
+﻿@model CahwciHospital.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Registration";
+    Layout = "_Layout";
+}
+
+<style>
+    .hero-bg {
+        min-height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.80)), url('/images/patientreg.png') center/cover no-repeat fixed;
+        display: flex;
+        align-items: center;
+        padding: 40px 0;
+    }
+
+    .registration-form {
+        background: rgba(255, 255, 255, 0.97);
+        color: #333;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+        .registration-form h1 {
+            color: #0d6efd;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+</style>
+
+<div class="hero-bg">
+    <div class="container">
+        <div class="registration-form">
+            <h1>Patient Registration</h1>
+
+            <form asp-action="Create" method="post">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Patient ID</label>
+                        <input type="text" class="form-control" asp-for="PatientId" placeholder="Auto-generated if empty" />
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" asp-for="FullName" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" asp-for="Age" min="1" max="120" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Sex</label>
+                        <select class="form-select" asp-for="Sex" required>
+                            <option value="">-- Select --</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="09XXXXXXXXX" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="patient@example.com" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" asp-for="Address" placeholder="House No., Street, Barangay, City" />
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-5">Register Patient</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

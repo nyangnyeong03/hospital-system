@@ -1,0 +1,761 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: #f8fafc;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('/images/hospital.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 40px 20px;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        transition: transform 0.2s linear;
+        will-change: transform;
+    }
+
+    .hero h1,
+    .hero h2,
+    .hero p {
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* SECTION */
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 50px;
+        color: #0f172a;
+    }
+
+    /* CAROUSEL */
+
+    .custom-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: nowrap;
+    }
+
+    .main-card {
+        width: 380px;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        transition: 0.4s;
+        flex-shrink: 0;
+    }
+
+        .main-card:hover {
+            transform: scale(1.02);
+        }
+
+        .main-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+        }
+
+    .side-card {
+        width: 200px;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: 0.4s;
+        flex-shrink: 0;
+    }
+
+        .side-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+    .faded {
+        opacity: 0.35;
+        transform: scale(0.92);
+    }
+
+    .card-info {
+        padding: 20px;
+        text-align: center;
+    }
+
+        .card-info h4 {
+            color: #0d6efd;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .card-info ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+    /* ABOUT */
+
+    .about-box {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* FOOTER */
+
+    footer {
+        background: #0f172a;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    /* RESPONSIVE */
+
+    @@media(max-width: 992px) {
+
+        .custom-carousel {
+            flex-direction: column;
+        }
+
+        .side-card {
+            display: none;
+        }
+
+        .main-card {
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem !important;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem !important;
+        }
+
+        .hero p {
+            font-size: 1rem !important;
+        }
+    }
+
+</style>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="container hero-content">
+
+        <img src="/images/acdc.png"
+             style="width:120px;height:120px;object-fit:contain;margin-bottom:20px;" />
+
+        <h1 style="
+            font-size:4rem;
+            font-weight:900;
+            letter-spacing:2px;
+            text-transform:uppercase;">
+
+            ACDC MEDICAL HOSPITAL
+
+        </h1>
+
+        <h2 style="
+            font-size:2rem;
+            font-weight:700;
+            color:#dbeafe;">
+
+            HOSPITAL & WELLNESS CENTER, INC.
+
+        </h2>
+
+        <p style="
+            font-size:2rem;
+            color:#ff4d4d;
+            font-style:italic;
+            margin-top:20px;">
+
+            "...bringing quality healthcare closer to you!"
+
+        </p>
+
+        <h1 style="
+            margin-top:40px;
+            font-size:4rem;
+            font-weight:900;
+            text-transform:uppercase;">
+
+            <span style="color:#e11d48;">HIGHER GRACE MEDICAL</span>
+            <span style="color:#60a5fa;">CENTER</span>
+
+        </h1>
+
+        <p class="lead mt-4" style="max-width:900px;margin:auto;">
+
+            With highly skilled professional experts here to treat our patients’ needs,
+            HIGHER GRACE MEDICAL CENTER, Inc. cares about going the extra mile
+            to ensure each patient has a satisfying experience.
+
+        </p>
+
+        <div class="mt-5">
+
+            <a href="#radiology"
+               class="btn btn-primary btn-lg px-5 py-3 me-3">
+
+                Explore Services ↓
+
+            </a>
+
+            <a asp-controller="Patients"
+               asp-action="Create"
+               class="btn btn-success btn-lg px-5 py-3">
+
+                Patient Registration
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ABOUT -->
+
+<div class="section">
+
+    <div class="container">
+
+        <div class="about-box">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-6 mb-4">
+
+                    <img src="/images/awp.png"
+                         class="img-fluid rounded shadow"
+                         style="width:100%;height:420px;object-fit:cover;">
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h2 class="fw-bold text-primary mb-4">
+                        About ACDC Medical Hospital
+                    </h2>
+
+                    <p style="font-size:18px; line-height:1.8;">
+
+                        ACDC Medical Hospital is committed to providing
+                        high-quality healthcare services with compassion,
+                        professionalism, and excellence.
+
+                    </p>
+
+                    <p style="font-size:18px; line-height:1.8;">
+
+                        We specialize in Radiology, Cardiovascular Care,
+                        Physical Medicine & Rehabilitation, and more.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RADIOLOGY -->
+
+<div id="radiology" class="section bg-light">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Radiology Department Services
+        </h2>
+
+        <div id="radiologyCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="1200">
+
+            <div class="carousel-inner">
+
+                <!-- CT -->
+
+                <div class="carousel-item active">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/ultrasound.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/ctscan.jpg">
+
+                            <div class="card-info">
+
+                                <h4>CT Scan</h4>
+
+                                <ul>
+                                    <li>Triphasic CT</li>
+                                    <li>CT Angiography</li>
+                                    <li>CT Aortogram</li>
+                                    <li>3D Reconstruction</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/xray.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- XRAY -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/ctscan.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/xray.jpg">
+
+                            <div class="card-info">
+
+                                <h4>X-Ray</h4>
+
+                                <ul>
+                                    <li>Routine X-Ray</li>
+                                    <li>Mammography</li>
+                                    <li>Scoliosis Series</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/ultrasound.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ULTRASOUND -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/xray.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/ultrasound.jpg">
+
+                            <div class="card-info">
+
+                                <h4>Ultrasound</h4>
+
+                                <ul>
+                                    <li>Whole Abdomen</li>
+                                    <li>Musculoskeletal</li>
+                                    <li>Liver Elastography</li>
+                                    <li>Breast</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/ctscan.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CARDIO -->
+
+<div class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Cardiovascular Unit Services
+        </h2>
+
+        <div id="cardioCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="1200">
+
+            <div class="carousel-inner">
+
+                <!-- ECG -->
+
+                <div class="carousel-item active">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/echo.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/ecg.jpg">
+
+                            <div class="card-info">
+
+                                <h4>ECG</h4>
+
+                                <ul>
+                                    <li>Heart Monitoring</li>
+                                    <li>Cardiac Diagnosis</li>
+                                    <li>Electrical Activity Test</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/stress.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ECHO -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/ecg.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/echo.jpg">
+
+                            <div class="card-info">
+
+                                <h4>2D Echo</h4>
+
+                                <ul>
+                                    <li>Heart Ultrasound</li>
+                                    <li>Valve Assessment</li>
+                                    <li>Blood Flow Analysis</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/stress.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- STRESS -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/ecg.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/stress.jpg">
+
+                            <div class="card-info">
+
+                                <h4>Stress Test</h4>
+
+                                <ul>
+                                    <li>Treadmill Test</li>
+                                    <li>Exercise Monitoring</li>
+                                    <li>Cardiac Endurance</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/echo.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PHYSICAL -->
+
+<div class="section bg-light">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Physical Medicine & Rehabilitation Services
+        </h2>
+
+        <div id="physicalCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="1200">
+
+            <div class="carousel-inner">
+
+                <!-- THERAPY -->
+
+                <div class="carousel-item active">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy2.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/Phy1.jpg">
+
+                            <div class="card-info">
+
+                                <h4>Therapy Session</h4>
+
+                                <ul>
+                                    <li>Physical Therapy</li>
+                                    <li>Body Recovery</li>
+                                    <li>Patient Rehabilitation</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy3.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- REHAB -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy1.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/Phy2.jpg">
+
+                            <div class="card-info">
+
+                                <h4>Rehabilitation</h4>
+
+                                <ul>
+                                    <li>Mobility Training</li>
+                                    <li>Muscle Recovery</li>
+                                    <li>Therapeutic Exercise</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy3.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RECOVERY -->
+
+                <div class="carousel-item">
+
+                    <div class="custom-carousel">
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy1.jpg">
+                        </div>
+
+                        <div class="main-card">
+
+                            <img src="/images/Phy3.jpg">
+
+                            <div class="card-info">
+
+                                <h4>Recovery Program</h4>
+
+                                <ul>
+                                    <li>Long-term Care</li>
+                                    <li>Strength Recovery</li>
+                                    <li>Wellness Program</li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="side-card faded">
+                            <img src="/images/Phy2.jpg">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+            </div>
+
+        </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- HERO SCROLL EFFECT -->
+<script>
+    window.addEventListener("scroll", function () {
+
+        const hero = document.querySelector(".hero-content");
+
+        let scrollY = window.scrollY;
+
+        let scale = Math.max(1 - scrollY / 3000, 0.75);
+
+        let translateY = scrollY * 0.3;
+
+        if (hero) {
+            hero.style.transform =
+                `translateY(${translateY}px) scale(${scale})`;
+        }
+
+    });
+</script>
+
+<!-- INFORMATION SCROLL FIX -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        if (window.location.hash === "#information") {
+
+            const section = document.getElementById("information");
+
+            if (section) {
+
+                setTimeout(() => {
+
+                    section.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 200);
+
+            }
+
+        }
+
+    });
+</script>
