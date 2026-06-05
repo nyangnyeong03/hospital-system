@@ -27,12 +27,56 @@ namespace CahwciHospital.Controllers
 
         // POST - Save New Doctor
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Doctor doctor)
         {
             if (ModelState.IsValid)
             {
                 doctor.Id = _doctors.Any() ? _doctors.Max(d => d.Id) + 1 : 1;
                 _doctors.Add(doctor);
+                return RedirectToAction("Index");
+            }
+            return View(doctor);
+        }
+
+        // GET - View Doctor Details
+        public IActionResult Details(int id)
+        {
+            var doctor = _doctors.FirstOrDefault(d => d.Id == id);
+            if (doctor == null)
+                return NotFound();
+
+            return View(doctor);
+        }
+
+        // GET - Show Edit Form
+        public IActionResult Edit(int id)
+        {
+            var doctor = _doctors.FirstOrDefault(d => d.Id == id);
+            if (doctor == null)
+                return NotFound();
+
+            return View(doctor);
+        }
+
+        // POST - Update Doctor
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Doctor doctor)
+        {
+            if (id != doctor.Id)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                var existingDoctor = _doctors.FirstOrDefault(d => d.Id == id);
+                if (existingDoctor != null)
+                {
+                    existingDoctor.FullName = doctor.FullName;
+                    existingDoctor.Specialty = doctor.Specialty;
+                    existingDoctor.Gender = doctor.Gender;
+                    existingDoctor.ContactNumber = doctor.ContactNumber;
+                }
                 return RedirectToAction("Index");
             }
             return View(doctor);

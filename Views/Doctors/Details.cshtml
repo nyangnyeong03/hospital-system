@@ -1,0 +1,39 @@
+﻿@model CahwciHospital.Models.Doctor
+
+@{
+    ViewData["Title"] = "Doctor Details";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h3>Doctor Details</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Full Name</dt>
+                        <dd class="col-sm-8">@Model.FullName</dd>
+
+                        <dt class="col-sm-4">Specialty</dt>
+                        <dd class="col-sm-8">@Model.Specialty</dd>
+
+                        <dt class="col-sm-4">Gender</dt>
+                        <dd class="col-sm-8">@Model.Gender</dd>
+
+                        <dt class="col-sm-4">Contact Number</dt>
+                        <dd class="col-sm-8">@Model.ContactNumber</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Index" class="btn btn-secondary">Back to Doctors List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

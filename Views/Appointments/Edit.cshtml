@@ -1,7 +1,7 @@
 ﻿@model CahwciHospital.Models.Appointment
 
 @{
-    ViewData["Title"] = "New Appointment";
+    ViewData["Title"] = "Edit Appointment";
     Layout = "_Layout";
 }
 
@@ -9,37 +9,46 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h3>New Appointment Request</h3>
+                <div class="card-header bg-warning text-dark">
+                    <h3>Edit Appointment</h3>
                 </div>
                 <div class="card-body">
-                    <form asp-action="Create">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+
                         <div class="mb-3">
-                            <label>Patient Name</label>
+                            <label class="form-label">Patient Name</label>
                             <input asp-for="PatientName" class="form-control" required />
                         </div>
+
                         <div class="mb-3">
-                            <label>Preferred Doctor</label>
+                            <label class="form-label">Preferred Doctor</label>
                             <input asp-for="PreferredDoctor" class="form-control" required />
                         </div>
+
                         <div class="mb-3">
-                            <label>Department</label>
+                            <label class="form-label">Department</label>
                             <input asp-for="Department" class="form-control" required />
                         </div>
+
                         <div class="mb-3">
-                            <label>Preferred Date</label>
+                            <label class="form-label">Preferred Date</label>
                             <input asp-for="PreferredDate" type="date" class="form-control" required />
                         </div>
+
                         <div class="mb-3">
-                            <label>Status</label>
+                            <label class="form-label">Status</label>
                             <select asp-for="Status" class="form-select">
                                 <option value="Scheduled">Scheduled</option>
-                                <option value="Pending">Pending</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Submit Request</button>
-                        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Save Changes</button>
+                            <a asp-action="Index" class="btn btn-secondary btn-lg">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>

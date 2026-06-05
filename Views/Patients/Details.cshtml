@@ -1,0 +1,43 @@
+﻿@model CahwciHospital.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<div class="container mt-4">
+    <h2>Patient Details</h2>
+    <hr />
+
+    @if (Model == null)
+    {
+        <p class="text-danger">Patient not found.</p>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">ID</dt>
+                    <dd class="col-sm-9">@Model.Id</dd>
+
+                    <dt class="col-sm-3">Full Name</dt>
+                    <dd class="col-sm-9">@Model.FullName</dd>
+
+                    <dt class="col-sm-3">Sex</dt>
+                    <dd class="col-sm-9">@Model.Sex</dd>
+
+                    <dt class="col-sm-3">Age</dt>
+                    <dd class="col-sm-9">@Model.Age</dd>
+
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">@Model.Address</dd>
+                </dl>
+            </div>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to Patient List</a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Edit Patient</a>
+    </div>
+</div>

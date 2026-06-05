@@ -1,76 +1,43 @@
 ﻿@model IEnumerable<CahwciHospital.Models.Appointment>
 
 @{
-    ViewData["Title"] = "Appointments";
+    ViewData["Title"] = "Appointments List";
     Layout = "_Layout";
 }
 
-<style>
-    .appointments-bg {
-        min-height: 100vh;
-        background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('/images/Appointment.png') center/cover no-repeat fixed;
-        padding: 40px 0;
-    }
-
-    .appointments-container {
-        background: rgba(255, 255, 255, 0.96);
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        max-width: 1300px;
-        margin: 0 auto;
-    }
-
-    .table thead {
-        background-color: #0d6efd;
-        color: white;
-    }
-
-    h1 {
-        color: white;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-    }
-</style>
-
-<div class="appointments-bg">
-    <div class="container">
-        <div class="appointments-container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1>Appointments List</h1>
-                <a asp-action="Create" class="btn btn-success btn-lg">
-                    + New Appointment
-                </a>
-            </div>
-
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Patient Name</th>
-                        <th>Doctor Name</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.Id</td>
-                            <td>@item.PatientName</td>
-                            <td>@item.DoctorName</td>
-                            <td>@(item.AppointmentDate?.ToString("MMMM dd, yyyy") ?? "—")</td>
-                            <td>—</td>   <!-- Temporary, until you have an AppointmentTime -->
-                            <td>@item.Status</td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>>
-            </table>
-        </div>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Appointments List</h2>
+        <a asp-action="Create" class="btn btn-success">+ New Appointment Request</a>
     </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient Name</th>
+                <th>Preferred Doctor</th>
+                <th>Department</th>
+                <th>Preferred Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.PatientName</td>
+                    <td>@item.PreferredDoctor</td>
+                    <td>@item.Department</td>
+                    <td>@item.PreferredDate.ToShortDateString()</td>
+                    <td><span class="badge bg-primary">@item.Status</span></td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

@@ -13,11 +13,10 @@ namespace CahwciHospital.Controllers
             {
                 Id = 1,
                 PatientName = "Juan Dela Cruz",
-                DoctorName = "Dr. Maria Reyes",
+                PreferredDoctor = "Dr. Maria Reyes",
                 Department = "Cardiology",
-                Date = DateTime.Now.AddDays(2),
-                Status = "Scheduled",
-                Reason = "Routine Check-up"
+                PreferredDate = DateTime.Now.AddDays(7),
+                Status = "Scheduled"
             }
         };
 
@@ -32,12 +31,42 @@ namespace CahwciHospital.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
                 appointment.Id = _appointments.Any() ? _appointments.Max(a => a.Id) + 1 : 1;
                 _appointments.Add(appointment);
+                return RedirectToAction("Index");
+            }
+            return View(appointment);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var appointment = _appointments.FirstOrDefault(a => a.Id == id);
+            if (appointment == null) return NotFound();
+            return View(appointment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Appointment appointment)
+        {
+            if (id != appointment.Id) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                var existing = _appointments.FirstOrDefault(a => a.Id == id);
+                if (existing != null)
+                {
+                    existing.PatientName = appointment.PatientName;
+                    existing.PreferredDoctor = appointment.PreferredDoctor;
+                    existing.Department = appointment.Department;
+                    existing.PreferredDate = appointment.PreferredDate;
+                    existing.Status = appointment.Status;
+                }
                 return RedirectToAction("Index");
             }
             return View(appointment);

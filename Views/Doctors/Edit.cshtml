@@ -1,0 +1,48 @@
+﻿@model CahwciHospital.Models.Doctor
+
+@{
+    ViewData["Title"] = "Edit Doctor";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3>Edit Doctor Information</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input asp-for="FullName" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Specialty</label>
+                            <input asp-for="Specialty" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <input asp-for="Gender" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input asp-for="ContactNumber" class="form-control" required />
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Save Changes</button>
+                            <a asp-action="Index" class="btn btn-secondary btn-lg">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
